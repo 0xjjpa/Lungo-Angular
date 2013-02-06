@@ -1,0 +1,42 @@
+section#template-main(data-transition='slide')
+    header(data-title='My Template', data-back='home blue')
+      nav.left
+        a(href='#template-menu', data-router='aside', data-icon='menu')
+    article#main-template.active.list.indented.scroll(data-transition='slide')
+      form
+        li.highlight
+          input(type="text", placeholder="Input text")
+        li.highlight
+          input(type="password", placeholder="Input password")
+        li.highlight
+          label.checkbox
+            input(type="checkbox")
+            |  Checkbox 
+        li.highlight
+          textarea(placeholder="Place your text here")
+        li.highlight
+          label.select
+            select.custom
+              option(value='1') Option 1
+              option(value='2') Option 2
+              option(value='3') Option 3
+    article#item-template-1.list(data-transition='slide')
+      li.highlight
+        strong
+          | Template Item 1
+      li.highlight
+        a.button.anchor.theme(href='#item-template-2', data-router='article')
+          | Travel to article 2
+      li.highlight
+        a.button.anchor.theme(href='#application-main', data-router='section')
+          | Travel to Index
+    article#item-template-2.list(data-transition='slide')
+      li.highlight
+        strong
+          | Template Item 2
+      li.highlight
+        a.button.anchor.theme(href='#item-template-1', data-router='article')
+          | Travel to article 1
+      li.highlight
+        a.button.anchor.theme(href='#application-main', data-router='section')
+          | Travel to Index
