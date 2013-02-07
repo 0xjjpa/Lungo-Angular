@@ -1,0 +1,9 @@
+
+<aside id="application-menu" ng-controller="RoomNameCtrl">
+  <header data-title="Menu"></header>
+  <article class="active list">
+    <ul ng-repeat="room in roomsData.data">
+      <li><a href="#item-application-1" data-router="article"><strong>{{room.name}}</strong></a></li>
+    </ul>
+  </article>
+</aside>

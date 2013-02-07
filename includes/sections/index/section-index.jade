@@ -1,0 +1,28 @@
+section#application-main(data-transition='slide')
+    header(data-title='My Application')
+      nav.left
+        a(href='#application-menu', data-router='aside', data-icon='menu')
+    article#main-application.active.list.indented.scroll(data-transition='slide')
+      li.highlight
+        a.button.anchor.theme(href='#template-main', data-router='section')
+          | Travel to Section Template
+    article#item-application-1.list(data-transition='slide')
+      li.highlight
+        strong
+          | Item 1
+      li.highlight
+        a.button.anchor.theme(href='#item-application-2', data-router='article')
+          | Travel to article 2
+      li.highlight
+        a.button.anchor.theme(href='#template-main', data-router='section')
+          | Travel to section
+    article#item-application-2.list(data-transition='slide')
+      li.highlight
+        strong
+          | Item 2
+      li.highlight
+        a.button.anchor.theme(href='#item-application-1', data-router='article')
+          | Travel to article 1
+      li.highlight
+        a.button.anchor.theme(href='#template-main', data-router='section')
+          | Travel to section

@@ -1,0 +1,7 @@
+aside#application-menu(ng-controller="RoomNameCtrl")
+    header(data-title='Menu')
+    article.active.list
+      ul(ng-repeat="room in roomsData.data")
+        li
+          a(href='#item-application-1', data-router='article')
+            strong {{room.name}}
