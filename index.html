@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="components/lungo/lungo.css">
   <link rel="stylesheet" href="components/lungo/theme.lungo.css">
 </head>
-<body class="ap">
+<body ng-app="RoomCalendar" class="ap">
   <section id="application-main" data-transition="slide">
     <header data-title="My Application">
       <nav class="left"><a href="#application-menu" data-router="aside" data-icon="menu"></a></nav>
@@ -37,12 +37,11 @@
       <li class="highlight"><a href="#template-main" data-router="section" class="button anchor theme">Travel to section</a></li>
     </article>
   </section>
-  <aside id="application-menu">
+  <aside id="application-menu" ng-controller="RoomNameCtrl">
     <header data-title="Menu"></header>
     <article class="active list">
-      <ul>
-        <li class="current"><a href="#item-application-1" data-router="article"><strong>Item 1</strong></a></li>
-        <li><a href="#item-application-2" data-router="article"><strong>Item 2</strong></a></li>
+      <ul ng-repeat="room in roomsData.data">
+        <li><a href="#item-application-1" data-router="article"><strong>{{room.name}}</strong></a></li>
       </ul>
     </article>
   </aside>
@@ -101,10 +100,10 @@
   <Lungo>- Dependencies </Lungo>-->
   <script src="components/quojs/quo.js"></script>
   <script src="components/lungo/lungo.debug.js"></script><!--
-  <Lungo>- Sandbox App </Lungo>-->
-  <script>
-    Lungo.init({
-    name: 'example'
-    });
-  </script>
+  <Angular>- Dependencies</Angular>-->
+  <script src="components/angular/angular.js"></script>
+  <script src="http://code.angularjs.org/angular-resource-1.0.0rc4.min.js"></script><!-- 
+  <Angular>Controllers and Bootstrap</Angular>-->
+  <script src="scripts/app.js"></script>
+  <script src="scripts/controllers/main.js"></script>
 </body>
