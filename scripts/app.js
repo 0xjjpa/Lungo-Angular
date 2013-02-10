@@ -1,13 +1,9 @@
 'use strict';
 
-var RoomCalendar = angular.module('RoomCalendar', ['ngResource']);
-RoomCalendar.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.
-      when('/', {controller: 'RoomNameCtrl'}).
-      when('/:roomName', {templateUrl: 'includes/sections/section-index.html', controller: 'RoomNameCtrl'}).
-      otherwise({redirectTo: '/'});
+var CentralWorld = angular.module('CentralWorld', ['Centralway.angular-lungo-bridge']);
+
+CentralWorld.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+  $routeProvider.when('/forms', {templateUrl: 'includes/sections/template/section-template.html', controller: 'Section'});
+  $locationProvider.html5Mode(true);
 }]);
 
-Lungo.init({
-	name: 'example'
-});

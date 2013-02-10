@@ -1,10 +1,11 @@
 {
   "name": "quojs",
   "description": "Micro #JavaScript Library for Mobile Devices",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "homepage": "http://quojs.tapquo.com",
   "author": {
-    "name": "Tapquo S.L."
+    "name": "Javi Jimenez Villar",
+    "url": "@soyjavi"
   },
   "main": [
     "quo.js"
@@ -17,7 +18,7 @@
       "type": "MIT"
     }
   ],
-  "_id": "QuoJS@2.3.0",
+  "_id": "QuoJS@2.3.1",
   "readme": "ERROR: No README.md file found!",
   "repository": {
     "type": "git",

@@ -1,12 +1,26 @@
 //
    Lungo - Dependencies 
-script(src='components/quojs/quo.js')
-script(src='components/lungo/lungo.debug.js')
+script(src='components/quojs/quo.debug.js')
+script(src='components/lungo/lungo.js')
+
+script 
+    var old_section = Lungo.Router.section;
+    Lungo.Router.section = function(section_id) {
+        console.log('Lungo.Router.section - transitioning to section ' + section_id);
+        old_section(section_id);
+    }
+
+    Lungo.init({
+        data    : 'Lungo how-to',
+        version : '2.0'
+    });
 //
    Angular - Dependencies
 script(src='components/angular/angular.js')
-script(src='http://code.angularjs.org/angular-resource-1.0.0rc4.min.js')
-// 
+script(src='components/angular-resource/angular-resource.js')
+script(src='components/angular-lungo/angular-lungo.js')
+
+//
    Angular Controllers and Bootstrap
 script(src='scripts/app.js')
-script(src='scripts/controllers/main.js')
+script(src='scripts/controllers/controllers.js')

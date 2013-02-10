@@ -1,6 +1,16 @@
 'use strict';
 
-RoomCalendar.controller('RoomNameCtrl', function($scope, $http, $location){
+
+
+CentralWorld.controller('NavigationCtrl', function($scope, $location){
+    AppRouter.instance = AppRouter(Lungo, $location, $scope);
+});
+
+CentralWorld.controller('Section', function($scope, $location){
+
+});
+
+CentralWorld.controller('RoomNameCtrl', function($scope, $http, $location){
   //$http.get('http://calendar.cloudnode.ch/rooms').then(function(response){
     $http.get('/fakeServer/rooms.json').then(function(response){
         $scope.roomsData = response;

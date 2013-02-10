@@ -1,6 +1,6 @@
-/* QuoJS v2.3.0 - 1/24/2013
+/* QuoJS v2.3.1 - 2/4/2013
    http://quojs.tapquo.com
-   Copyright (c) 2013 Tapquo S.L. - Licensed MIT */
+   Copyright (c) 2013 Javi Jimenez Villar (@soyjavi) - Licensed MIT */
 
 var Quo;
 
@@ -208,10 +208,9 @@ window.Quo = Quo;
     Android: /(Android)\s+([\d.]+)/,
     ipad: /(iPad).*OS\s([\d_]+)/,
     iphone: /(iPhone\sOS)\s([\d_]+)/,
-    blackberry: /(BlackBerry).*Version\/([\d.]+)/,
-    blackberryPlaybook: /(PlayBook).*Version\/([\d.]+)/,
-    firefoxOS: /(Mozilla).*Mobile[^\/]*\/([\d\.]*)/,
-    webos: /(webOS|hpwOS)[\s\/]([\d.]+)/
+    Blackberry: /(BlackBerry|BB10|Playbook).*Version\/([\d.]+)/,
+    FirefoxOS: /(Mozilla).*Mobile[^\/]*\/([\d\.]*)/,
+    webOS: /(webOS|hpwOS)[\s\/]([\d.]+)/
   };
   $$.isMobile = function() {
     _current = _current || _detectEnvironment();
@@ -518,7 +517,6 @@ window.Quo = Quo;
 
 
 (function($$) {
-  var _prependElement;
   $$.fn.text = function(value) {
     if (value || $$.toType(value) === "number") {
       return this.each(function() {
@@ -564,35 +562,41 @@ window.Quo = Quo;
     var type;
     type = $$.toType(value);
     return this.each(function() {
-      return _prependElement(this, value, type);
+      var _this = this;
+      if (type === "string") {
+        return this.insertAdjacentHTML("afterbegin", value);
+      } else if (type === "array") {
+        return value.each(function(index, value) {
+          return _this.insertBefore(value, _this.firstChild);
+        });
+      } else {
+        return this.insertBefore(value, this.firstChild);
+      }
     });
   };
   $$.fn.replaceWith = function(value) {
     var type;
     type = $$.toType(value);
     this.each(function() {
+      var _this = this;
       if (this.parentNode) {
-        return _prependElement(this.parentNode, value, type);
+        if (type === "string") {
+          return this.insertAdjacentHTML("beforeBegin", value);
+        } else if (type === "array") {
+          return value.each(function(index, value) {
+            return _this.parentNode.insertBefore(value, _this);
+          });
+        } else {
+          return this.parentNode.insertBefore(value, this);
+        }
       }
     });
     return this.remove();
   };
-  $$.fn.empty = function() {
+  return $$.fn.empty = function() {
     return this.each(function() {
       return this.innerHTML = null;
     });
-  };
-  return _prependElement = function(parent, value, type) {
-    var _this = this;
-    if (type === "string") {
-      return parent.insertAdjacentHTML("afterbegin", value);
-    } else if (type === "array") {
-      return value.each(function(index, value) {
-        return parent.insertBefore(value, parent.firstChild);
-      });
-    } else {
-      return parent.insertBefore(value, parent.firstChild);
-    }
   };
 })(Quo);
 
@@ -807,7 +811,7 @@ window.Quo = Quo;
 
 
 (function($$) {
-  var ELEMENT_ID, EVENTS_DESKTOP, EVENT_METHODS, HANDLERS, READY_EXPRESSION, SHORTCUTS, _createProxy, _createProxyCallback, _environmentEvent, _findHandlers, _getElementId, _subscribe, _unsubscribe;
+  var ELEMENT_ID, EVENTS_DESKTOP, EVENT_METHODS, HANDLERS, READY_EXPRESSION, _createProxy, _createProxyCallback, _environmentEvent, _findHandlers, _getElementId, _subscribe, _unsubscribe;
   ELEMENT_ID = 1;
   HANDLERS = {};
   EVENT_METHODS = {
@@ -824,13 +828,6 @@ window.Quo = Quo;
     orientationchange: "resize"
   };
   READY_EXPRESSION = /complete|loaded|interactive/;
-  SHORTCUTS = ["tap"];
-  SHORTCUTS.forEach(function(event) {
-    $$.fn[event] = function(callback) {
-      return $$(document.body).delegate(this.selector, event, callback);
-    };
-    return this;
-  });
   $$.fn.on = function(event, selector, callback) {
     if (selector === "undefined" || $$.toType(selector) === "function") {
       return this.bind(event, selector);
@@ -972,7 +969,7 @@ window.Quo = Quo;
   };
   _findHandlers = function(element_id, event, fn, selector) {
     return (HANDLERS[element_id] || []).filter(function(handler) {
-      return handler && (!event || handler.event === event) && (!fn || handler.fn === fn) && (!selector || handler.selector === selector);
+      return handler && (!event || handler.event === event) && (!fn || handler.callback === fn) && (!selector || handler.selector === selector);
     });
   };
   return _createProxy = function(event) {
@@ -1004,11 +1001,12 @@ window.Quo = Quo;
   CURRENT_TOUCH = [];
   TOUCH_TIMEOUT = void 0;
   HOLD_DELAY = 650;
-  GESTURES = ["doubleTap", "hold", "swipe", "swiping", "swipeLeft", "swipeRight", "swipeUp", "swipeDown", "rotate", "rotating", "rotateLeft", "rotateRight", "pinch", "pinching", "pinchIn", "pinchOut", "drag", "dragLeft", "dragRight", "dragUp", "dragDown"];
+  GESTURES = ["tap", "singleTap", "doubleTap", "hold", "swipe", "swiping", "swipeLeft", "swipeRight", "swipeUp", "swipeDown", "rotate", "rotating", "rotateLeft", "rotateRight", "pinch", "pinching", "pinchIn", "pinchOut", "drag", "dragLeft", "dragRight", "dragUp", "dragDown"];
   GESTURES.forEach(function(event) {
     $$.fn[event] = function(callback) {
-      return this.on(event, callback);
+      return $$(document.body).delegate(this.selector, event, callback);
     };
+    return this;
   });
   $$(document).ready(function() {
     return _listenTouches();

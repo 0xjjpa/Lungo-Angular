@@ -1,109 +1,63 @@
 <!DOCTYPE html>
-<html></html>
-<head>
-  <meta charset="utf-8">
-  <title>Lungo Template</title>
-  <meta name="description" content="">
-  <meta name="author" content="Javier Jiménez Villar (@soyjavi)">
-  <meta name="HandheldFriendly" content="True">
-  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="format-detection" content="telephone=no">
-  <meta http-equiv="cleartype" content="on"><!--
-  <Main>Stylesheet </Main>-->
-  <link rel="stylesheet" href="components/lungo/lungo.css">
-  <link rel="stylesheet" href="components/lungo/lungo.icon.css">
-  <link rel="stylesheet" href="components/lungo/lungo.icon.brand.css">
-  <link rel="stylesheet" href="components/lungo/lungo.css">
-  <link rel="stylesheet" href="components/lungo/theme.lungo.css">
-</head>
-<body ng-app="RoomCalendar" class="ap">
-  <section id="application-main" data-transition="slide">
-    <header data-title="My Application">
-      <nav class="left"><a href="#application-menu" data-router="aside" data-icon="menu"></a></nav>
-    </header>
-    <article id="main-application" data-transition="slide" class="active list indented scroll">
-      <li class="highlight"><a href="#template-main" data-router="section" class="button anchor theme">Travel to Section Template</a></li>
-    </article>
-    <article id="item-application-1" data-transition="slide" class="list">
-      <li class="highlight"><strong>Item 1</strong></li>
-      <li class="highlight"><a href="#item-application-2" data-router="article" class="button anchor theme">Travel to article 2</a></li>
-      <li class="highlight"><a href="#template-main" data-router="section" class="button anchor theme">Travel to section</a></li>
-    </article>
-    <article id="item-application-2" data-transition="slide" class="list">
-      <li class="highlight"><strong>Item 2</strong></li>
-      <li class="highlight"><a href="#item-application-1" data-router="article" class="button anchor theme">Travel to article 1</a></li>
-      <li class="highlight"><a href="#template-main" data-router="section" class="button anchor theme">Travel to section</a></li>
-    </article>
-  </section>
-  <aside id="application-menu" ng-controller="RoomNameCtrl">
-    <header data-title="Menu"></header>
-    <article class="active list">
-      <ul ng-repeat="room in roomsData.data">
-        <li><a href="/{{room.name | lowercase }}"><strong>{{room.name}}</strong></a></li>
-      </ul>
-    </article>
-  </aside>
-  <section id="template-main" data-transition="slide">
-    <header data-title="My Template" data-back="home blue">
-      <nav class="left"><a href="#template-menu" data-router="aside" data-icon="menu"></a></nav>
-    </header>
-    <article id="main-template" data-transition="slide" class="active list indented scroll">
-      <form>
-        <li class="highlight">
-          <input type="text" placeholder="Input text">
-        </li>
-        <li class="highlight">
-          <input type="password" placeholder="Input password">
-        </li>
-        <li class="highlight">
-          <label class="checkbox">
-            <input type="checkbox"> Checkbox 
-          </label>
-        </li>
-        <li class="highlight">
-          <textarea placeholder="Place your text here"></textarea>
-        </li>
-        <li class="highlight">
-          <label class="select">
-            <select class="custom">
-              <option value="1">Option 1</option>
-              <option value="2">Option 2</option>
-              <option value="3">Option 3</option>
-            </select>
-          </label>
-        </li>
-      </form>
-    </article>
-    <article id="item-template-1" data-transition="slide" class="list">
-      <li class="highlight"><strong>Template Item 1</strong></li>
-      <li class="highlight"><a href="#item-template-2" data-router="article" class="button anchor theme">Travel to article 2</a></li>
-      <li class="highlight"><a href="#application-main" data-router="section" class="button anchor theme">Travel to Index</a></li>
-    </article>
-    <article id="item-template-2" data-transition="slide" class="list">
-      <li class="highlight"><strong>Template Item 2</strong></li>
-      <li class="highlight"><a href="#item-template-1" data-router="article" class="button anchor theme">Travel to article 1</a></li>
-      <li class="highlight"><a href="#application-main" data-router="section" class="button anchor theme">Travel to Index</a></li>
-    </article>
-  </section>
-  <aside id="template-menu">
-    <header data-title="Menu"></header>
-    <article class="active list">
-      <ul>
-        <li class="current"><a href="#main-template" data-router="article"><strong>Main</strong></a></li>
-        <li><a href="#item-template-1" data-router="article"><strong>Item 1</strong></a></li>
-        <li><a href="#item-template-2" data-router="article"><strong>Item 2</strong></a></li>
-      </ul>
-    </article>
-  </aside><!--
-  <Lungo>- Dependencies </Lungo>-->
-  <script src="components/quojs/quo.js"></script>
-  <script src="components/lungo/lungo.debug.js"></script><!--
-  <Angular>- Dependencies</Angular>-->
-  <script src="components/angular/angular.js"></script>
-  <script src="http://code.angularjs.org/angular-resource-1.0.0rc4.min.js"></script><!-- 
-  <Angular>Controllers and Bootstrap</Angular>-->
-  <script src="scripts/app.js"></script>
-  <script src="scripts/controllers/main.js"></script>
-</body>
+<html ng-app="CentralWorld">
+  <head>
+    <meta charset="utf-8">
+    <title>Lungo Template</title>
+    <meta name="description" content="">
+    <meta name="author" content="Javier Jiménez Villar (@soyjavi)">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="cleartype" content="on"><!--
+    <Main>Stylesheet </Main>-->
+    <link rel="stylesheet" href="components/lungo/lungo.css">
+    <link rel="stylesheet" href="components/lungo/lungo.icon.css">
+    <link rel="stylesheet" href="components/lungo/lungo.icon.brand.css">
+    <link rel="stylesheet" href="components/lungo/lungo.css">
+    <link rel="stylesheet" href="components/lungo/theme.lungo.css">
+  </head>
+  <body class="app">
+    <section id="main" data-transition="slide">
+      <header data-title="My Application" ng-controller="NavigationCtrl">
+        <nav class="left"><a href="#application-menu" data-router="aside" data-icon="menu"></a></nav>
+        <nav class="right"><a href="/forms">Forms</a></nav>
+      </header>
+      <article id="main-application" class="active list indented scroll">
+        <li class="highlight"><a href="/forms" class="button anchor theme">Travel to Section Template</a></li>
+      </article>
+    </section>
+    <aside id="application-menu" ng-controller="RoomNameCtrl">
+      <header data-title="Menu"></header>
+      <article class="active list">
+        <ul ng-repeat="room in roomsData.data">
+          <li>       <a href="/{{room.name | lowercase }}"><strong>{{room.name}}</strong></a></li>
+        </ul>
+      </article>
+    </aside>
+    <cw-view></cw-view><!--
+    <Lungo>- Dependencies </Lungo>-->
+    <script src="components/quojs/quo.debug.js"></script>
+    <script src="components/lungo/lungo.js"></script>
+    <script>
+      var old_section = Lungo.Router.section;
+      Lungo.Router.section = function(section_id) {
+          console.log('Lungo.Router.section - transitioning to section ' + section_id);
+          old_section(section_id);
+      }
+      
+      Lungo.init({
+          data    : 'Lungo how-to',
+          version : '2.0'
+      });
+    </script><!--
+    <Angular>- Dependencies</Angular>-->
+    <script src="components/angular/angular.js"></script>
+    <script src="components/angular-resource/angular-resource.js"></script>
+    <script src="components/angular-lungo/angular-lungo.js"></script><!--
+    <Angular>Controllers and Bootstrap</Angular>-->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/controllers.js"></script>
+  </body>
+</html>
