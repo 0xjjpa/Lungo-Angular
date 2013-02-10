@@ -4,8 +4,7 @@ var RoomCalendar = angular.module('RoomCalendar', ['ngResource']);
 RoomCalendar.config(['$routeProvider', function($routeProvider) {
   $routeProvider.
       when('/', {controller: 'RoomNameCtrl'}).
-      when('/:roomName', {controller: 'RoomNameCtrl'}).
-      when('/:roomName/:googleEventId/next_event', {}).
+      when('/:roomName', {templateUrl: 'includes/sections/section-index.html', controller: 'RoomNameCtrl'}).
       otherwise({redirectTo: '/'});
 }]);
 
